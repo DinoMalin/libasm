@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
-extern size_t	ft_strlen(const char *str);
-extern char		*ft_strcpy(char *dest, const char *str);
-extern int		ft_strcmp(const char *s1, const char *s2);
+extern size_t		ft_strlen(const char *str);
+extern char			*ft_strcpy(char *dest, const char *str);
+extern int			ft_strcmp(const char *s1, const char *s2);
+extern size_t		ft_write(int fd, const void *buf, size_t nbytes);
 
 // TESTS
 int main() {
@@ -51,4 +52,9 @@ int main() {
 	printf("exp: %d\t- rec: %d\t\n", strcmp(cmp3, cmp4), ft_strcmp(cmp3, cmp4));
 	printf("exp: %d\t- rec: %d\t\n", strcmp(cmp5, cmp6), ft_strcmp(cmp5, cmp6));
 	printf("exp: %d\t- rec: %d\t\n", strcmp(cmp7, cmp8), ft_strcmp(cmp7, cmp8));
+
+	// ft_write
+	printf("\n///// ft_write /////\n");
+	printf("ret: %zu\n", ft_write(1, "dinosaur\n", 9));
+	printf("ret: %zu\n", ft_write(1, "", 0));
 }

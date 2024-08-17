@@ -1,7 +1,7 @@
 NAME	= libasm.a
 TEST	= tests
 
-FILES	= ft_strlen ft_strcpy ft_strcmp
+FILES	= ft_strlen ft_strcpy ft_strcmp ft_write
 MAIN	= main
 
 CC		= cc
