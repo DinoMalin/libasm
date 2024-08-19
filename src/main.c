@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
+#include <errno.h>
 
 extern size_t		ft_strlen(const char *str);
 extern char			*ft_strcpy(char *dest, const char *str);
 extern int			ft_strcmp(const char *s1, const char *s2);
-extern size_t		ft_write(int fd, const void *buf, size_t nbytes);
+extern ssize_t		ft_write(int fd, const void *buf, size_t nbytes);
 
 // TESTS
 int main() {
@@ -55,6 +57,7 @@ int main() {
 
 	// ft_write
 	printf("\n///// ft_write /////\n");
-	printf("ret: %zu\n", ft_write(1, "dinosaur\n", 9));
-	printf("ret: %zu\n", ft_write(1, "", 0));
+	printf("ret: %zd\n", ft_write(1, "dinosaur\n", 9));
+	printf("ret: %zd\n", ft_write(1, "", 0));
+	printf("ret: %zd - errno: %s\n", ft_write(5, "dino\n", 5), strerror(errno));
 }
