@@ -2,11 +2,16 @@
 #include <string.h>
 #include <sys/types.h>
 #include <errno.h>
+#include <fcntl.h>
+
+#define BLUE	"\e[1;34m"
+#define RESET	"\033[0m"
 
 extern size_t		ft_strlen(const char *str);
 extern char			*ft_strcpy(char *dest, const char *str);
 extern int			ft_strcmp(const char *s1, const char *s2);
 extern ssize_t		ft_write(int fd, const void *buf, size_t nbytes);
+extern ssize_t		ft_read(int fd, const void *buf, size_t nbytes);
 
 // TESTS
 int main() {
@@ -60,4 +65,17 @@ int main() {
 	printf("ret: %zd\n", ft_write(1, "dinosaur\n", 9));
 	printf("ret: %zd\n", ft_write(1, "", 0));
 	printf("ret: %zd - errno: %s\n", ft_write(5, "dino\n", 5), strerror(errno));
+
+	// read
+	int fd = open("src/ft_read.s", O_RDONLY);
+	char rd_buff1[100];
+	int bytes = ft_read(fd, rd_buff1, 99);
+
+
+	printf("\n///// ft_read /////\n");
+	printf("buff: %s[%s]%s...\n ret: %d\n", BLUE, rd_buff1, RESET, bytes);
+
+	char rd_buff2[100];
+	bytes = ft_read(5, rd_buff2, 99);
+	printf("buff: [%s] - ret: %d - errno: %s\n", rd_buff2, bytes, strerror(errno));
 }
