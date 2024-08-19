@@ -1,13 +1,13 @@
 NAME	= libasm.a
 TEST	= tests
 
-FILES	= ft_strlen ft_strcpy ft_strcmp ft_write ft_read
+FILES	= ft_strlen ft_strcpy ft_strcmp ft_write ft_read ft_strdup
 MAIN	= main
 
 CC		= cc
 NASM	= nasm
-CFLAGS	= -Wall -Wextra -Werror
-ASFLAGS	= -f elf64
+CFLAGS	= -Wall -Wextra -Werror -g
+ASFLAGS	= -f elf64 -g
 
 SRC_DIR	= src/
 OBJ_DIR	= obj/
