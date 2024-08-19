@@ -6,7 +6,7 @@ section .text
 	global ft_strdup
 
 ft_strdup:
-	mov rsi, rdi
+	push rdi ; Push the content of rdi in the stack. Otherwise, we will probably lose it : Much more secure than giving it to a tmp register we may use in an other function
 
 	call ft_strlen
 	inc rax
@@ -17,6 +17,7 @@ ft_strdup:
 	je .error
 
 	mov rdi, rax
+	pop rsi ; Get back the first element of the stack to rsi => What we pushed earlier.
 	call ft_strcpy
 
 	ret
@@ -24,6 +25,6 @@ ft_strdup:
 .error:
 	neg rax
 	mov rdi, rax
-	call __errno_location ; We need errno => errno_location put the address of errno in rax.
+	call __errno_location
 	xor rax, rax
 	ret
