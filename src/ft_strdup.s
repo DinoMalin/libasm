@@ -26,5 +26,6 @@ ft_strdup:
 	neg rax
 	mov rdi, rax
 	call __errno_location
+	mov [rax], rdi
 	xor rax, rax
 	ret
